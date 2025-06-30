@@ -473,6 +473,7 @@ async function runManualCommit(commitMessage, dryRun) {
 }
 
 program
+    .version(JSON.parse(await fs.readFile(new URL('../package.json', import.meta.url))).version, '-v, --version', 'display the version number')
     .name('git-flash')
     .description('An AI assistant for git and file system operations.')
     .argument('[instruction]', 'The natural language instruction for the git agent.')

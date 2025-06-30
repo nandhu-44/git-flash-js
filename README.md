@@ -1,6 +1,7 @@
 # Git Flash (JS)
 
-This is a Node.js port of the original Python-based `git-flash` tool.
+This is a Node.js port of the original Python-based [`git-flash`](https://github.com/aloshdenny/git-flash) tool.
+> Can be used as **`git-flash`** or **`git flash`** command.
 
 ## Installation
 
@@ -15,7 +16,7 @@ npm install -g git-flash-js
 Provide an instruction in natural language:
 
 ```bash
-git-flash "create a new branch called hotfix and switch to it"
+git flash "create a new branch called hotfix and switch to it"
 ```
 
 ### Manual Commit
@@ -23,7 +24,7 @@ git-flash "create a new branch called hotfix and switch to it"
 Provide a specific commit message:
 
 ```bash
-git-flash -m "fix: resolve issue #123"
+git flash -m "fix: resolve issue #123"
 ```
 
 ### Auto-commit
@@ -31,7 +32,7 @@ git-flash -m "fix: resolve issue #123"
 Run with no arguments for an auto-generated commit message based on staged changes:
 
 ```bash
-git-flash
+git flash
 ```
 
 ### Dry Run
@@ -39,5 +40,5 @@ git-flash
 Use the `--dry-run` flag to simulate any of the above commands without making changes:
 
 ```bash
-git-flash --dry-run "create a new feature branch"
+git flash --dry-run "create a new feature branch"
 ```
