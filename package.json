@@ -1,5 +1,5 @@
 {
-  "name": "git-flash",
+  "name": "git-flash-js",
   "version": "0.0.0",
   "description": "An AI assistant to handle git and file system operations.",
   "type": "module",
@@ -16,12 +16,20 @@
     "gemini",
     "cli"
   ],
-  "author": "",
-  "license": "ISC",
+  "author": "nandhu44",
+  "license": "MIT",
   "dependencies": {
     "@google/generative-ai": "^0.11.3",
     "chalk": "^5.3.0",
     "commander": "^12.1.0",
     "dotenv": "^16.4.5"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nandhu-44/git-flash-js.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nandhu-44/git-flash-js/issues"
+  },
+  "homepage": "https://github.com/nandhu-44/git-flash-js#readme"
 }
