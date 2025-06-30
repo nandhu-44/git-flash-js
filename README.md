@@ -5,7 +5,7 @@ This is a Node.js port of the original Python-based `git-flash` tool.
 ## Installation
 
 ```bash
-npm install -g .
+npm install -g git-flash-js
 ```
 
 ## Usage
