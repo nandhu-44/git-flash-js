@@ -6,6 +6,7 @@ import { promises as fs } from 'fs';
 import path from 'path';
 import os from 'os';
 import { exec } from 'child_process';
+import ncu from 'npm-check-updates';
 
 const program = new Command();
 
@@ -472,6 +473,23 @@ async function runManualCommit(commitMessage, dryRun) {
     }
 }
 
+async function checkForUpdates() {
+    console.log(chalk.cyan.bold('Checking for updates...'));
+    const upgraded = await ncu.run({
+        packageFile: new URL('../package.json', import.meta.url).pathname,
+        upgrade: true,
+        jsonUpgraded: true
+    });
+
+    if (Object.keys(upgraded).length > 0) {
+        console.log(chalk.green.bold('A new version is available!'));
+        console.log(chalk.blue('To upgrade, run:'));
+        console.log(chalk.blue('  npm install -g git-flash-js@latest'));
+    } else {
+        console.log(chalk.green.bold('You are already using the latest version.'));
+    }
+}
+
 program
     .version(JSON.parse(await fs.readFile(new URL('../package.json', import.meta.url))).version, '-v, --version', 'display the version number')
     .name('git-flash')
@@ -479,8 +497,11 @@ program
     .argument('[instruction]', 'The natural language instruction for the git agent.')
     .option('-m, --message <message>', 'A specific commit message to use.')
     .option('--dry-run', 'Perform a dry run.')
+    .option('-u, --update', 'Check for updates.')
     .action(async (instruction, options) => {
-        if (instruction) {
+        if (options.update) {
+            await checkForUpdates();
+        } else if (instruction) {
             await runGenerativeGitFlow(instruction, options.dryRun);
         } else if (options.message) {
             await runManualCommit(options.message, options.dryRun);
@@ -490,3 +511,4 @@ program
     });
 
 program.parse(process.argv);
+

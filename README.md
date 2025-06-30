@@ -9,6 +9,8 @@ This is a Node.js port of the original Python-based [`git-flash`](https://github
 npm install -g git-flash-js
 ```
 
+Upon successful installation, you will see a message displaying the installed version and usage instructions.
+
 ## Usage
 
 ### Generative Git Flow
@@ -33,6 +35,14 @@ Run with no arguments for an auto-generated commit message based on staged chang
 
 ```bash
 git flash
+```
+
+### Check for Updates
+
+Check if a new version of `git-flash-js` is available:
+
+```bash
+git flash --update
 ```
 
 ### Dry Run
